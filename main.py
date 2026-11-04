@@ -1,4 +1,5 @@
 import csv
+import statistics
 import time
 
 from functional import two_ukas, bin_serch, bin_serch_two_arr, exp_serch_two_arr, double_bin_search_two_arr
@@ -20,51 +21,97 @@ def create_degenerate_case(m, n):
     arr1 = [2 * n + 1 + 2 * i for i in range(m)]
     return arr1, arr2
 
+
 def test_time(arr1, arr2):
     res = []
-    print(f"_________________________________")
     k = 5
-    s = 0
+    times = []
     for _ in range(k):
         t0 = time.perf_counter()
         two_ukas(arr1, arr2)
         t1 = time.perf_counter()
-        s += t1 - t0
-    result = s / k
+        times.append(t1 - t0)
+    result = statistics.median(times)
     print(result)
     res.append(result)
 
-    s = 0
+    times.clear()
     for _ in range(k):
         t0 = time.perf_counter()
         bin_serch_two_arr(arr1, arr2)
         t1 = time.perf_counter()
-        s += t1 - t0
-    result = s / k
+        times.append(t1 - t0)
+    result = statistics.median(times)
     print(result)
     res.append(result)
 
-    s = 0
+    times.clear()
     for _ in range(k):
         t0 = time.perf_counter()
         r = exp_serch_two_arr(arr1, arr2)
         t1 = time.perf_counter()
-        s += t1 - t0
-    result = s / k
+        times.append(t1 - t0)
+    result = statistics.median(times)
     print(result)
     res.append(result)
 
-    s = 0
+    times.clear()
     for _ in range(k):
         t0 = time.perf_counter()
         double_bin_search_two_arr(arr1, arr2)
         t1 = time.perf_counter()
-        s += t1 - t0
-    result = s / k
+        times.append(t1 - t0)
+    result = statistics.median(times)
     print(result)
     res.append(result)
 
     return res
+
+# def test_time(arr1, arr2):
+#     res = []
+#     print(f"_________________________________")
+#     k = 5
+#     s = 0
+#     for _ in range(k):
+#         t0 = time.perf_counter()
+#         two_ukas(arr1, arr2)
+#         t1 = time.perf_counter()
+#         s += t1 - t0
+#     result = s / k
+#     print(result)
+#     res.append(result)
+#
+#     s = 0
+#     for _ in range(k):
+#         t0 = time.perf_counter()
+#         bin_serch_two_arr(arr1, arr2)
+#         t1 = time.perf_counter()
+#         s += t1 - t0
+#     result = s / k
+#     print(result)
+#     res.append(result)
+#
+#     s = 0
+#     for _ in range(k):
+#         t0 = time.perf_counter()
+#         r = exp_serch_two_arr(arr1, arr2)
+#         t1 = time.perf_counter()
+#         s += t1 - t0
+#     result = s / k
+#     print(result)
+#     res.append(result)
+#
+#     s = 0
+#     for _ in range(k):
+#         t0 = time.perf_counter()
+#         double_bin_search_two_arr(arr1, arr2)
+#         t1 = time.perf_counter()
+#         s += t1 - t0
+#     result = s / k
+#     print(result)
+#     res.append(result)
+#
+#     return res
 
 def write_csv(rows, filename="results.csv"):
     with open(filename, "w", newline="", encoding="utf-8") as f:
