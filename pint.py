@@ -22,9 +22,8 @@ Markers = {
 
 
 def plot_series(df, x_col, x_label, title, filename):
-    """Строит график time_sec vs x_col для всех алгоритмов."""
     if df.empty:
-        print(f"⚠️  Нет данных для {title}")
+        print(f"Нет данных для {title}")
         return
 
     plt.figure(figsize=(10, 6))
@@ -53,9 +52,6 @@ def build_4_plots(csv_file="results.csv"):
     df = pd.read_csv(csv_file)
     df = df[df["type"] == "normal"].copy()
 
-    # --------------------------------------------------------
-    # ГРАФИК 1: N = 10^8, M растёт (M << N)
-    # --------------------------------------------------------
     sub = df[df["N"] == 10**8].copy()
     plot_series(
         sub, x_col="M",
@@ -64,9 +60,6 @@ def build_4_plots(csv_file="results.csv"):
         filename="plot_1_N1e8_M_grows.png",
     )
 
-    # --------------------------------------------------------
-    # ГРАФИК 2: M = 10^8, N растёт (M >> N)
-    # --------------------------------------------------------
     sub = df[df["M"] == 10**8].copy()
     plot_series(
         sub, x_col="N",
@@ -75,9 +68,6 @@ def build_4_plots(csv_file="results.csv"):
         filename="plot_2_M1e8_N_grows.png",
     )
 
-    # --------------------------------------------------------
-    # ГРАФИК 3: M = N, оба растут
-    # --------------------------------------------------------
     sub = df[df["M"] == df["N"]].copy()
     sub["size"] = sub["M"]
     plot_series(
@@ -87,9 +77,6 @@ def build_4_plots(csv_file="results.csv"):
         filename="plot_3_MeqN.png",
     )
 
-    # --------------------------------------------------------
-    # ГРАФИК 4: M = 10^7 фиксировано, N = 10^7, 10^8
-    # --------------------------------------------------------
     sub = df[df["M"] == 10**7].copy()
     plot_series(
         sub, x_col="N",
