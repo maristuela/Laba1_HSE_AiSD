@@ -94,7 +94,7 @@ def main():
         (10 ** 4, 10 ** 8, "normal"),
         (10**5, 10**8, "normal"),
         (10**6, 10**8, "normal"),
-        (10**7, 10**8, "normal"),
+        # (10**7, 10**8, "normal"),
 
         (10 ** 8, 10 ** 2, "normal"),
         (10 ** 8, 10 ** 3, "normal"),
@@ -108,7 +108,7 @@ def main():
         (10 ** 4, 10 ** 8, "degenerate"),
         (10**5, 10**8, "degenerate"),
         (10**6, 10**8, "degenerate"),
-        (10 ** 7, 10 ** 8, "degenerate"),
+        # (10 ** 7, 10 ** 8, "degenerate"),
     ]
 
     rows = []
