@@ -24,8 +24,8 @@ def bin_serch(arr, element):
     return False
 
 def bin_serch_two_arr(a, b):
-    # if len(a) > len(b):
-    #     a, b = b, a
+    if len(a) > len(b):
+        a, b = b, a
     for element in a:
         if bin_serch(b, element):
             return True
@@ -61,8 +61,8 @@ def exp_serch(arr, element, l):
     return res
 
 def exp_serch_two_arr(a, b):
-    # if len(a) > len(b):
-    #     a, b = b, a
+    if len(a) > len(b):
+        a, b = b, a
     a_key = 0
     b_key = 0
     while a_key < len(a) and b_key < len(b):
@@ -88,6 +88,6 @@ def double_bin_search(a, b,la=0, ra=-1 , lb=0, rb=-1 ):
 
 
 def double_bin_search_two_arr(a, b):
-    # if len(a) > len(b):
-    #     a, b = b, a
+    if len(a) > len(b):
+        a, b = b, a
     return double_bin_search(a, b, 0, len(a) - 1, 0, len(b) - 1)
